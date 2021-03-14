@@ -6,52 +6,52 @@ import java.util.List;
 import java.util.Set;
 
 public class SimulateTooLateClass {
-
     private static Set<Student> students;
     private static List<Trainer> trainers;
     private static List<Group> groups;
 
-
     public static void main(String[] args) {
-//        System.out.println("First name is: " + student1.getFirstName() + " "
+        //        System.out.println("First name is: " + student1.getFirstName() + " "
 //                + "Last name is: " + student1.getLastName() + " "
 //                + "Birth date is: " + student1.getDateOfBirth() + " "
 //                + "And the java knowledge is: " + student1.isHasPreviousJavaKnowledge());
-        createClassroom();
-        printTrainers();
-        printGroups();
-        printStudents();
-    }
 
-    private static void printStudents() {
-        System.out.println("Students: ");
-        System.out.println(students);
+        createClass();
+        printTrainers();
+        printStudents();
+        printGroup();
+
     }
 
     private static void printTrainers() {
-        System.out.println("Trainers: ");
         System.out.println(trainers);
+
     }
 
-    private static void printGroups() {
-        System.out.println("Groups: ");
+    private static void printGroup() {
         System.out.println(groups);
+
     }
 
-    private static void createClassroom() {
-        //Students
-        Student student1 = new Student("Andrei", "Manea1", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student2 = new Student("student2", "Ulcior", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student3 = new Student("student3", "Prosop", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student4 = new Student("student4", "Cana", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student5 = new Student("student5", "Cini", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student6 = new Student("student6", "Mini", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student7 = new Student("student7", "Ini", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student8 = new Student("student8", "Popa", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student9 = new Student("student9", "Pian", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Student student10 = new Student("student10", "Geana", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
+    private static void printStudents() {
+        System.out.println(students);
 
-        students = new HashSet<Student>();
+    }
+
+    private static void createClass() {
+
+        Student student1 = new Student(" Olteanu ", "Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student2 = new Student(" Draga ", "Sorin ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student3 = new Student(" Gradinaru ", "Traian ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student4 = new Student(" Lenter ", "Diana ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student5 = new Student(" Naghi ", "Andrea ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student6 = new Student(" Gheorghe ", "Dorina ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student7 = new Student(" Calin ", "Cornelia ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student8 = new Student(" Orza ", "Alexandra ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student9 = new Student(" Balan ", "Adrian ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student10 = new Student(" Torok ", "Szabi ", LocalDate.of(1988, Month.DECEMBER, 1), false);
+
+        students = new HashSet<>();
         students.add(student1);
         students.add(student2);
         students.add(student3);
@@ -63,41 +63,41 @@ public class SimulateTooLateClass {
         students.add(student9);
         students.add(student10);
 
-        Set<Student> students1 = new HashSet<Student>();
-        students1.add(student1);
-        students1.add(student2);
-        students1.add(student3);
 
-        Set<Student> students2 = new HashSet<Student>();
-        students2.add(student4);
-        students2.add(student5);
-        students2.add(student6);
+        Set<Student> studentsRo16 = new HashSet<>();
+        studentsRo16.add(student1);
+        studentsRo16.add(student2);
+        studentsRo16.add(student3);
 
-        Set<Student> students3 = new HashSet<Student>();
-        students3.add(student7);
-        students3.add(student8);
+        Set<Student> studentsRo17 = new HashSet<>();
+        studentsRo17.add(student4);
+        studentsRo17.add(student5);
+        studentsRo17.add(student6);
 
-        Set<Student> students4 = new HashSet<Student>();
-        students4.add(student9);
-        students4.add(student10);
+        Set<Student> studentsRo18 = new HashSet<>();
+        studentsRo18.add(student7);
+        studentsRo18.add(student8);
 
-        //Trainers
-        Trainer trainer1 = new Trainer("trainer1", "Ceapa", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Trainer trainer2 = new Trainer("trainer2", "Capra", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        Trainer trainer3 = new Trainer("trainer3", "Oala", LocalDate.of(1997, Month.SEPTEMBER, 19), true);
-        System.out.println(trainer1);
+        Set<Student> studentsRo19 = new HashSet<>();
+        studentsRo19.add(student9);
+        studentsRo19.add(student10);
+
+
+        Trainer trainer1 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Trainer trainer2 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Trainer trainer3 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
 
         trainers = Arrays.asList(trainer1, trainer2, trainer3);
 
-        //Groups
-        Group group1 = new Group(trainer1, students1);
-        Group group2 = new Group(trainer2, students2);
-        Group group3 = new Group(trainer1, students3);
-        Group group4 = new Group(trainer3, students4);
 
-        groups = Arrays.asList(group1, group2, group3, group4);
-        System.out.println(group1);
+        Group javaRo16 = new Group(trainer1, studentsRo16);
+        Group javaRo17 = new Group(trainer1, studentsRo17);
+        Group javaRo18 = new Group(trainer3, studentsRo18);
+        Group javaRo19 = new Group(trainer3, studentsRo19);
+
+        groups = Arrays.asList(javaRo16, javaRo17, javaRo19, javaRo18);
 
     }
 }
+
 

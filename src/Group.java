@@ -1,5 +1,4 @@
 import java.util.List;
-
 import java.util.Set;
 
 public class Group {
@@ -14,8 +13,8 @@ public class Group {
     @Override
     public String toString() {
         return "Group{" +
-                " trainer=" + trainer +
-                ", students=" + students +
+                " trainer = " + trainer +
+                ", students = " + students +
                 '}';
     }
 }
