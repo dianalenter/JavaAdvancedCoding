@@ -1,9 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SimulateTooLateClass {
     private static Set<Student> students;
@@ -16,7 +13,7 @@ public class SimulateTooLateClass {
     private static Trainer trainer1, trainer2, trainer3;
     private static Group javaRo16, javaRo17, javaRo18, javaRo19;
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         //        System.out.println("First name is: " + student1.getFirstName() + " "
 //                + "Last name is: " + student1.getLastName() + " "
 //                + "Birth date is: " + student1.getDateOfBirth() + " "
@@ -26,6 +23,7 @@ public class SimulateTooLateClass {
         printTrainers();
         printStudents();
         printGroup();
+        printstudentAlfabetically();
 
     }
 
@@ -42,6 +40,12 @@ public class SimulateTooLateClass {
     private static void printStudents() {
         System.out.println(students);
 
+    }
+
+    private static void printstudentAlfabetically() {
+        students.stream()
+                .sorted(Comparator.comparing(student -> student.getLastName()))
+                .forEach(student -> System.out.println(student));
     }
 
     private static void createClass() {
