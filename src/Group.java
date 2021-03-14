@@ -19,6 +19,7 @@ public class Group {
         this.trainer = trainer;
     }
 
+
     public void setStudents(Set<Student> students) {
         this.trainer = trainer;
         if (students.size() <= 5) {
@@ -27,6 +28,11 @@ public class Group {
             throw new MaximumNumberOfStudentsReached("Students limit exceeded");
             //  throw new LocalExceptions("Null pointer exception");
         }
+
+    }
+
+    public Set<Student> getStudents() {
+        return students;
     }
 
     @Override
