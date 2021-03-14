@@ -9,6 +9,12 @@ public class SimulateTooLateClass {
     private static Set<Student> students;
     private static List<Trainer> trainers;
     private static List<Group> groups;
+    private static Set<Student> studentsRo16;
+    private static Set<Student> studentsRo17;
+    private static Set<Student> studentsRo18;
+    private static Set<Student> studentsRo19;
+    private static Trainer trainer1, trainer2, trainer3;
+    private static Group javaRo16, javaRo17, javaRo18, javaRo19;
 
     public static void main(String[] args) {
         //        System.out.println("First name is: " + student1.getFirstName() + " "
@@ -16,7 +22,7 @@ public class SimulateTooLateClass {
 //                + "Birth date is: " + student1.getDateOfBirth() + " "
 //                + "And the java knowledge is: " + student1.isHasPreviousJavaKnowledge());
 
-        createClass();
+        createClass();     //ctrl+click
         printTrainers();
         printStudents();
         printGroup();
@@ -40,6 +46,30 @@ public class SimulateTooLateClass {
 
     private static void createClass() {
 
+        addStudents();      //ctrl+click
+        addTrainers();
+        addGroups();
+
+    }
+
+    private static void addGroups() {
+        javaRo16 = new Group(trainer1, studentsRo16);
+        javaRo17 = new Group(trainer1, studentsRo17);
+        javaRo18 = new Group(trainer3, studentsRo18);
+        javaRo19 = new Group(trainer3, studentsRo19);
+
+        groups = Arrays.asList(javaRo16, javaRo17, javaRo19, javaRo18);
+    }
+
+    private static void addTrainers() {
+        trainer1 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        trainer2 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        trainer3 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+
+        trainers = Arrays.asList(trainer1, trainer2, trainer3);
+    }
+
+    private static void addStudents() {
         Student student1 = new Student(" Olteanu ", "Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
         Student student2 = new Student(" Draga ", "Sorin ", LocalDate.of(1988, Month.OCTOBER, 12), false);
         Student student3 = new Student(" Gradinaru ", "Traian ", LocalDate.of(1988, Month.OCTOBER, 12), false);
@@ -64,39 +94,23 @@ public class SimulateTooLateClass {
         students.add(student10);
 
 
-        Set<Student> studentsRo16 = new HashSet<>();
+        studentsRo16 = new HashSet<>();
         studentsRo16.add(student1);
         studentsRo16.add(student2);
         studentsRo16.add(student3);
 
-        Set<Student> studentsRo17 = new HashSet<>();
+        studentsRo17 = new HashSet<>();
         studentsRo17.add(student4);
         studentsRo17.add(student5);
         studentsRo17.add(student6);
 
-        Set<Student> studentsRo18 = new HashSet<>();
+        studentsRo18 = new HashSet<>();
         studentsRo18.add(student7);
         studentsRo18.add(student8);
 
-        Set<Student> studentsRo19 = new HashSet<>();
+        studentsRo19 = new HashSet<>();
         studentsRo19.add(student9);
         studentsRo19.add(student10);
-
-
-        Trainer trainer1 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
-        Trainer trainer2 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
-        Trainer trainer3 = new Trainer(" Olteanu ", " Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
-
-        trainers = Arrays.asList(trainer1, trainer2, trainer3);
-
-
-        Group javaRo16 = new Group(trainer1, studentsRo16);
-        Group javaRo17 = new Group(trainer1, studentsRo17);
-        Group javaRo18 = new Group(trainer3, studentsRo18);
-        Group javaRo19 = new Group(trainer3, studentsRo19);
-
-        groups = Arrays.asList(javaRo16, javaRo17, javaRo19, javaRo18);
-
     }
 }
 
