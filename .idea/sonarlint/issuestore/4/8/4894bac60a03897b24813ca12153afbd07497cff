@@ -1,24 +1,24 @@
 
-B
-java:S1481*"-Remove this unused "JavaRo18" local variable.(“ã€
-f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÏ‘Ü
-C
-java:S1481)"-Remove this unused "JavaRo17" local variable.(ÎÏ‘Ü
 N	java:S106"9Replace this use of System.out or System.err by a logger.(ÖÐ ÷
-f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëéëý
 f	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÎìÙ
+f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÏ‘Ü
 Q
 java:S1854*"<Remove this useless assignment to local variable "JavaRo18".(“ã€
-Q	java:S125"<This block of commented-out lines of code should be removed.(ÊþÐŸ
-R
-java:S1854("<Remove this useless assignment to local variable "JavaRo16".(ëéëý
+f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëéëý
 R
 java:S1854)"<Remove this useless assignment to local variable "JavaRo17".(ÎÏ‘Ü
+e	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ã€
+C
+java:S1481)"-Remove this unused "JavaRo17" local variable.(ÎÏ‘Ü
 c
 java:S1192"HDefine a constant instead of duplicating this literal "Lenter" 13 times.(Þ™¨®ùÿÿÿÿ
 S	java:S106&"9Replace this use of System.out or System.err by a logger.(¯†ÎÍøÿÿÿÿ
-e	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ã€
-0
-java:S1220""Move this file to a named package.
 C
 java:S1481("-Remove this unused "JavaRo16" local variable.(ëéëý
+0
+java:S1220""Move this file to a named package.
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÊþÐŸ
+R
+java:S1854("<Remove this useless assignment to local variable "JavaRo16".(ëéëý
+B
+java:S1481*"-Remove this unused "JavaRo18" local variable.(“ã€
