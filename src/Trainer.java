@@ -7,6 +7,9 @@ public class Trainer extends Person {
         super(firstName, lastName, dateOfBirth);
         this.isAuthorized = isAuthorized;
     }
+    public boolean isAuthorized() {
+        return isAuthorized;
+    }
 
     @Override
     public String toString() {

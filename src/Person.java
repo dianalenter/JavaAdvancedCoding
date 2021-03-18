@@ -44,4 +44,5 @@ public abstract class Person {
                 ", lastName= '" + lastName + '\'' +
                 ", dateOfBirth= " + dateOfBirth + ", ";
     }
+
 }

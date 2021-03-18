@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Period;
 import java.util.*;
 
 public class SimulateTooLateClass {
@@ -26,57 +27,49 @@ public class SimulateTooLateClass {
         printstudentAlfabetically();
         showMaxNumberOfStudentsFromGroup_classicMethod();
         showAllMaxNumberOfStudentsFromGroup_classicMethod();
-        showMaxNumberOfStudentsFromGroup_functionalMethod();
+        displayGroupWithMaxNumOfStudent_FunctionalMethod();
+        displayGroupWithMinNumOfStudent_FunctionalMethod();
+        studentsYoungerThan(25);
+        displayStudentsYoungerThan(25);
+        studentsGroupedByTrainer_WithGroups();
+
+        studentsGroupedByTrainer_WithMAp(); //Functioneaza daca nu fac modificari in grupuri
+
+        //-----------------------------------
+
+        displayStudentsWithPreviousJavaKnowledge();
+
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge();
+
+        removeStudentsYoungerThanFromGroups(25);
+
+        printStudentsAlphabeticallyByFirstName();
 
     }
 
     private static void printTrainers() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista de trainers: ");
         System.out.println(trainers);
 
     }
 
     private static void printGroup() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista de grupe: ");
         System.out.println(groups);
 
     }
 
     private static void printStudents() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista de studenti: ");
         System.out.println(students);
 
     }
-
-    private static void showMaxNumberOfStudentsFromGroup_classicMethod() {
-        Group aux = new Group(null, new LinkedHashSet<>());
-        for (Group group : groups) {
-            if (group.getStudents().size() > aux.getStudents().size()) {  //>= ca sa arate daca au mai multe grupe acelasi nr de studenti
-                aux = group;
-            }
-        }
-        System.out.println("max group size " + aux);
-    }
-
-    private static void showAllMaxNumberOfStudentsFromGroup_classicMethod() {
-        List<Group> groupsMax = new ArrayList<>();
-        Group aux = new Group(null, new LinkedHashSet<>());
-
-        for (Group group : groups) {
-            if (group.getStudents().size() > aux.getStudents().size()) {
-                aux = group;
-                groupsMax = new ArrayList<>();
-                groupsMax.add(group);
-            } else if (group.getStudents().size() == aux.getStudents().size()) {
-                groupsMax.add(group);
-            }
-        }
-        System.out.println("list of maximum list" + groupsMax);
-    }
-
-    private static void showMaxNumberOfStudentsFromGroup_functionalMethod() {
-
-
-    }
-
     private static void printstudentAlfabetically() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista studentilor sortata dupa firstName: ");
         students.stream()
                 .sorted(Comparator.comparing(Student::getLastName))
                 .forEach(System.out::println);
@@ -85,6 +78,167 @@ public class SimulateTooLateClass {
 //                .sorted(Comparator.comparing(student -> student.getLastName()))
 //                .forEach(student -> System.out.println(student);
     }
+    private static void printStudentsAlphabeticallyByFirstName() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista studentilor sortata dupa firstName: ");
+        students.stream()
+                .sorted(Comparator.comparing(student -> student.getFirstName()))
+                .forEach(student -> System.out.print(student + " "));
+    }
+
+
+    private static void showMaxNumberOfStudentsFromGroup_classicMethod() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Grupele cu maxim numar de studenti (classic method_1): ");
+        Group aux = new Group(null,null, new LinkedHashSet<>());
+        for (Group group : groups) {
+            if (group.getListOfStudents().size() > aux.getListOfStudents().size()) {  //>= ca sa arate daca au mai multe grupe acelasi nr de studenti
+                aux = group;
+            }
+        }
+        System.out.println("max group size " + aux);
+    }
+
+    private static void showAllMaxNumberOfStudentsFromGroup_classicMethod() {
+        System.out.println("\n-----------------------------------");
+        List<Group> groupsMax = new ArrayList<>();
+        Group aux = new Group(null,null, new LinkedHashSet<>());
+
+        for (Group group : groups) {
+            if (group.getListOfStudents().size() > aux.getListOfStudents().size()) {
+                aux = group;
+                groupsMax = new ArrayList<>();
+                groupsMax.add(group);
+            } else if (group.getListOfStudents().size() == aux.getListOfStudents().size()) {
+                groupsMax.add(group);
+            }
+        }
+        System.out.println("list of maximum list" + groupsMax);
+    }
+
+    private static void displayGroupWithMaxNumOfStudent_FunctionalMethod() {
+        //functional method
+        System.out.println("\n-----------------------------------");
+        System.out.print("Grupele cu maxim numar de studenti (functional method): ");
+        groups.stream()
+                .filter(g -> g.getListOfStudents().size() ==
+                        groups.stream()
+                                .max(Comparator.comparingInt(g1 -> g1.getListOfStudents().size())).get().getListOfStudents().size())
+                // .max((g1,g2) -> Integer.compare(g1.getListOfStudents().size(),g2.getListOfStudents().size()))
+                //   .get().getListOfStudents().size())
+
+                //Altfel (sortat in ordine crescatoare si luat primul element ca max):
+                // groups.stream()
+                //      .sorted((g1,g2) -> Integer.compare(g2.getListOfStudents().size(),g1.getListOfStudents().size()))
+                //      .findFirst().get().getListOfStudents().size())
+
+                //.forEach(g -> System.out.println(g));
+                .forEach(System.out::println);
+    }
+    private static void displayGroupWithMinNumOfStudent_FunctionalMethod() {
+        //functional method
+        System.out.println("\n-----------------------------------");
+        System.out.print("Grupele cu minim numar de studenti (functional method): ");
+        groups.stream()
+                .filter(g -> g.getListOfStudents().size() ==
+                        groups.stream()
+                                .min(Comparator.comparingInt(g1 -> g1.getListOfStudents().size())).get().getListOfStudents().size())
+                // .map(Group::getNameOfGroup)       //va lista doar numele grupelor(daca decomentez linia aceasta)
+                .forEach(System.out::println);
+    }
+    private static void studentsYoungerThan(int age) {
+        System.out.println("\n-----------------------------------");
+        System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
+        students.stream()
+                .filter(student ->
+                        Period.between(student.getDateOfBirth(), LocalDate.now()).getYears() < age)
+                .forEach(student -> System.out.print(student));
+    }
+
+    private static void displayStudentsYoungerThan(int age) {
+        System.out.println("\n-----------------------------------");
+        System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
+        students.stream()
+                .filter(student -> student.getAge() < age)
+                .forEach(student -> System.out.print(student));
+    }
+
+    private static void studentsGroupedByTrainer_WithGroups() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista studentilor grupat dupa traineri: ");
+        for (Trainer trainer : trainers) {
+            System.out.print("\n" + trainer.getFirstName() + "'s students: ");
+            for (Group group : groups) {
+                if (trainer.equals(group.getTrainer())) {
+                    for (Student student : group.getListOfStudents()) {
+                        System.out.print(student);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void studentsGroupedByTrainer_WithMAp() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista studentilor grupat dupa traineri: ");
+        for (Trainer trainer : trainers) {
+            System.out.print("\n" + trainer.getFirstName() + "'s students: ");
+            for (Map.Entry<Student, Trainer> mapElement : Group.getStudentTrainerMap().entrySet()) {
+                if (trainer.equals(mapElement.getValue())) {
+                    System.out.print("  " + mapElement.getKey().toString());
+                }
+            }
+        }
+    }
+
+    private static void displayStudentsWithPreviousJavaKnowledge() {
+        System.out.println("\n-----------------------------------");
+        System.out.print("Lista studentilor care au cunostinte Java: ");
+        for (Student student : students) {
+            if (student.isHasPreviousJavaKnowledge())
+                System.out.print(student);
+        }
+    }
+
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge() {
+        System.out.println("\n-----------------------------------");
+
+        int[] arrayOfNumStudents = new int[groups.size()];
+        for (int gIndex = 0; gIndex < groups.size(); gIndex++) {
+            for (Student student : groups.get(gIndex).getListOfStudents()) {
+                if (!student.isHasPreviousJavaKnowledge()) {
+                    arrayOfNumStudents[gIndex]++;
+                }
+            }
+        }
+        int maxNum = 0;
+        int maxIndex = 0;
+        for (int i = 0; i < arrayOfNumStudents.length; i++) {
+            if (maxNum < arrayOfNumStudents[i]) {
+                maxNum = arrayOfNumStudents[i];
+                maxIndex = i;
+            }
+        }
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: " + groups.get(maxIndex));
+    }
+
+    private static void removeStudentsYoungerThanFromGroups(int age) {
+        System.out.println("\n-----------------------------------");
+
+
+        for (Group group : groups) {
+            //     Group auxGroup = new Group(null, null, null);
+            Set<Student> auxStudentList = new HashSet<>();
+            for (Student student : group.getListOfStudents()) {
+                if (Period.between(student.getDateOfBirth(), LocalDate.now()).getYears() >= age) {
+                    auxStudentList.add(student);
+                }
+            }
+            group.setListOfStudents(auxStudentList);
+        }
+        System.out.print("\nLista grupelor dupa stergerea studentilor mai tineri decat " + age + " ani : " + groups);
+    }
+
 
     private static void createClass() {
 
@@ -92,13 +246,15 @@ public class SimulateTooLateClass {
         addTrainers();
         addGroups();
 
+        //JavaRo19.setTrainer(trainer3); - pana nu  schimbam pe private trainer
+        // List<Person> personList = new ArrayList<>();
     }
 
     private static void addGroups() {
-        javaRo16 = new Group(trainer1, studentsRo16);
-        javaRo17 = new Group(trainer1, studentsRo17);
-        javaRo18 = new Group(trainer3, studentsRo18);
-        javaRo19 = new Group(null, studentsRo19);
+        javaRo16 = new Group("JavaRo16",trainer1, studentsRo16);
+        javaRo17 = new Group("JavaRo17",trainer1, studentsRo17);
+        javaRo18 = new Group("JavaRo18",trainer3, studentsRo18);
+        javaRo19 = new Group("JavaRo19",null, studentsRo19);
 
         groups = Arrays.asList(javaRo16, javaRo17, javaRo19, javaRo18);
     }

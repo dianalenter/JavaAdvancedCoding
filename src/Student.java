@@ -20,6 +20,17 @@ public class Student extends Person {
     public String getLastName() {
         return super.getLastName();
     }
+    public String getFirstName(){
+        return super.getFirstName();
+    }
+
+    public int getAge(){
+        return LocalDate.now().getYear() - super.getDateOfBirth().getYear();
+    }
+
+    public LocalDate getDateOfBirth(){
+        return super.getDateOfBirth();
+    }
 
     @Override
     public String toString() {
