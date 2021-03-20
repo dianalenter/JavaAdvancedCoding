@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SimulateTooLateClass {
     private static Set<Student> students;
@@ -48,6 +49,7 @@ public class SimulateTooLateClass {
         displayGroupWithMinNumOfStudent_FunctionalMethod();
         studentsYoungerThan(25);
         displayStudentsYoungerThan(25);
+        displayStudentsYoungerThan1(25);
         studentsGroupedByTrainer_WithGroups();
 
         studentsGroupedByTrainer_WithMAp(); //Functioneaza daca nu fac modificari in grupuri
@@ -192,12 +194,23 @@ public class SimulateTooLateClass {
                 .forEach(student -> System.out.print(student));
     }
 
+    //void
     private static void displayStudentsYoungerThan(int age) {
         System.out.println("\n-----------------------------------");
         System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
-        students.stream()
+        students.parallelStream()
                 .filter(student -> student.getAge() < age)
                 .forEach(student -> System.out.print(student));
+
+    }
+
+    //List
+    private static List<Student> displayStudentsYoungerThan1(int age) {
+        System.out.println("\n-----------------------------------");
+        System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
+        return students.stream()
+                .filter(student -> student.getAge() < age)
+                .collect(Collectors.toList());
     }
 
     private static void studentsGroupedByTrainer_WithGroups() {
