@@ -14,6 +14,23 @@ public class SimulateTooLateClass {
     private static Trainer trainer1, trainer2, trainer3;
     private static Group javaRo16, javaRo17, javaRo18, javaRo19;
 
+    //VARARGS
+    private static String getLongestString(String... longestStringArray) {
+        //  int maxLength = 0;
+        String auxString = "";
+//        for (String element : longestStringArray) {
+//            if (element.length() > maxLength) {
+//                maxLength = element.length();
+//                auxString = element;
+//            } sau, am mai scapat de 2 linii de cod
+        for (String element : longestStringArray) {
+            if (element.length() > auxString.length()) {
+                auxString = element;
+            }
+        }
+        return auxString;
+    }
+
     public static void main(String[] args) {
         //        System.out.println("First name is: " + student1.getFirstName() + " "
 //                + "Last name is: " + student1.getLastName() + " "
@@ -48,6 +65,7 @@ public class SimulateTooLateClass {
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2();
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3();
         System.out.println("Triple : " + tripleNumberOfStudentsFromMaxGroup(getAllMaxNumberOfStudentsFromGroup_classicMethod()));
+        System.out.println("cuvantul cu dimensiunea cea mai mare este  : " + getLongestString("Diana", "Liviu", "Leah"));//VARARGS: nputem scrie si fara paramatrii dar nu ne afiseaza nimic
     }
 
     private static void printTrainers() {
@@ -124,12 +142,12 @@ public class SimulateTooLateClass {
 
     //...variable arguments, putem folosi atunci cand este ultimul paramatru din lista de parametrii, se foloseste cand e lista sau singur element
     private static int multiplyingNumberOfStudentsFromMaxGroup(int numberOfTimes, List<Group> maxGroup) {
-        System.out.println("\n-----------------------------------");
+
         return maxGroup.size() * maxGroup.get(0).getListOfStudents().size() * numberOfTimes;
     }
 
     private static int tripleNumberOfStudentsFromMaxGroup(List<Group> maxGroup) {
-        System.out.println("\n-----------------------------------");
+
         return multiplyingNumberOfStudentsFromMaxGroup(3, maxGroup);
     }
 
