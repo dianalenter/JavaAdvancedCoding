@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Student extends Person {
-    private boolean hasPreviousJavaKnowledge;
+    boolean hasPreviousJavaKnowledge;
 
 
     public Student(String firstName, String lastName, LocalDate dateOfBirth, boolean hasPreviousJavaKnowledge) {

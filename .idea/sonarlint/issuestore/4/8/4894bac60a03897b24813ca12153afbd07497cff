@@ -1,24 +1,39 @@
 
-N	java:S106"9Replace this use of System.out or System.err by a logger.(ÖÐ ÷
-f	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÎìÙ
-f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÏ‘Ü
-Q
-java:S1854*"<Remove this useless assignment to local variable "JavaRo18".(“ã€
-f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëéëý
-R
-java:S1854)"<Remove this useless assignment to local variable "JavaRo17".(ÎÏ‘Ü
-e	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ã€
-C
-java:S1481)"-Remove this unused "JavaRo17" local variable.(ÎÏ‘Ü
-c
-java:S1192"HDefine a constant instead of duplicating this literal "Lenter" 13 times.(Þ™¨®ùÿÿÿÿ
-S	java:S106&"9Replace this use of System.out or System.err by a logger.(¯†ÎÍøÿÿÿÿ
-C
-java:S1481("-Remove this unused "JavaRo16" local variable.(ëéëý
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÊþÐŸ
 0
 java:S1220""Move this file to a named package.
-Q	java:S125"<This block of commented-out lines of code should be removed.(ÊþÐŸ
-R
-java:S1854("<Remove this useless assignment to local variable "JavaRo16".(ëéëý
-B
-java:S1481*"-Remove this unused "JavaRo18" local variable.(“ã€
+i
+java:S1192k"LDefine a constant instead of duplicating this literal " Alexandru " 3 times.(íŒÕ¿8í÷žúƒ/
+g
+java:S1192k"JDefine a constant instead of duplicating this literal " Olteanu " 4 times.(íŒÕ¿8í÷žúƒ/
+t
+java:S1450"WRemove the "javaRo16" field and declare it as a local variable in the relevant methods.(‹½ÉŠ8í÷žúƒ/
+t
+java:S1450"WRemove the "javaRo17" field and declare it as a local variable in the relevant methods.(‹½ÉŠ8í÷žúƒ/
+t
+java:S1450"WRemove the "javaRo18" field and declare it as a local variable in the relevant methods.(‹½ÉŠ8í÷žúƒ/
+t
+java:S1450"WRemove the "javaRo19" field and declare it as a local variable in the relevant methods.(‹½ÉŠ8í÷žúƒ/
+t
+java:S1450"WRemove the "trainer2" field and declare it as a local variable in the relevant methods.(ì©€—8í÷žúƒ/
+C
+java:S1659"&Declare "trainer2" on a separate line.(ì©€—8í÷žúƒ/
+C
+java:S1659"&Declare "trainer3" on a separate line.(ì©€—8í÷žúƒ/
+C
+java:S1659"&Declare "javaRo17" on a separate line.(‹½ÉŠ8í÷žúƒ/
+C
+java:S1659"&Declare "javaRo18" on a separate line.(‹½ÉŠ8í÷žúƒ/
+C
+java:S1659"&Declare "javaRo19" on a separate line.(‹½ÉŠ8í÷žúƒ/
+X	java:S125"<This block of commented-out lines of code should be removed.(ü…«–8í÷žúƒ/
+U	java:S106""9Replace this use of System.out or System.err by a logger.(Òè›¸8í÷žúƒ/
+Z	java:S106'"9Replace this use of System.out or System.err by a logger.(†äÎãüÿÿÿÿ8í÷žúƒ/
+U	java:S106,"9Replace this use of System.out or System.err by a logger.(ØŸ¦8í÷žúƒ/
+o	java:S1000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä‘ááúÿÿÿÿ8í÷žúƒ/
+Z	java:S1067"9Replace this use of System.out or System.err by a logger.(‚Ýôùÿÿÿÿ8í÷žúƒ/
+o	java:S100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãß“óÿÿÿÿÿ8í÷žúƒ/
+U	java:S106G"9Replace this use of System.out or System.err by a logger.(Õñ¤²8í÷žúƒ/
+X	java:S125J"<This block of commented-out lines of code should be removed.(Ø­ï8í÷žúƒ/
+Z	java:S106R"9Replace this use of System.out or System.err by a logger.(¹¦…‡úÿÿÿÿ8í÷žúƒ/
+]	java:S125V"<This block of commented-out lines of code should be removed.(ÂÂ¿ºþÿÿÿÿ8í÷žúƒ/

@@ -44,12 +44,13 @@ public class SimulateTooLateClass {
         printGroup();
         printstudentAlfabetically();
         getNumberOfStudentsFromGroup_classicMethod();
-        getAllMaxNumberOfStudentsFromGroup_classicMethod();
+        getAllMaxNumberOfStudentsFromGroup_classicMethod(groups);
         displayGroupWithMaxNumOfStudent_FunctionalMethod();
         displayGroupWithMinNumOfStudent_FunctionalMethod();
         studentsYoungerThan(25);
         displayStudentsYoungerThan(25);
-        displayStudentsYoungerThan1(25);
+        System.out.println(displayStudentsYoungerThan1(25));
+        System.out.println(displayStudentsYoungerThan2(23));
         studentsGroupedByTrainer_WithGroups();
 
         studentsGroupedByTrainer_WithMAp(); //Functioneaza daca nu fac modificari in grupuri
@@ -57,8 +58,10 @@ public class SimulateTooLateClass {
         //-----------------------------------
 
         displayStudentsWithPreviousJavaKnowledge();
+        displayStudentsWithPreviousJavaKnowledge1();
 
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge();
+
 
         removeStudentsYoungerThanFromGroups(25);
 
@@ -66,7 +69,7 @@ public class SimulateTooLateClass {
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge4();
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2();
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3();
-        System.out.println("Triple : " + tripleNumberOfStudentsFromMaxGroup(getAllMaxNumberOfStudentsFromGroup_classicMethod()));
+        System.out.println("Triple : " + tripleNumberOfStudentsFromMaxGroup(getAllMaxNumberOfStudentsFromGroup_classicMethod(groups)));
         System.out.println("cuvantul cu dimensiunea cea mai mare este  : " + getLongestString("Diana", "Liviu", "Leah"));//VARARGS: nputem scrie si fara paramatrii dar nu ne afiseaza nimic
     }
 
@@ -124,12 +127,12 @@ public class SimulateTooLateClass {
         System.out.println("max group size " + aux);
     }
 
-    private static List<Group> getAllMaxNumberOfStudentsFromGroup_classicMethod() {
+    public static List<Group> getAllMaxNumberOfStudentsFromGroup_classicMethod(List<Group>groupList) {
         System.out.println("\n-----------------------------------");
         List<Group> groupsMax = new ArrayList<>();
         Group aux = new Group(null, null, new LinkedHashSet<>());
 
-        for (Group group : groups) {
+        for (Group group : groupList) {
             if (group.getListOfStudents().size() > aux.getListOfStudents().size()) {
                 aux = group;
                 groupsMax = new ArrayList<>();
@@ -198,7 +201,7 @@ public class SimulateTooLateClass {
     private static void displayStudentsYoungerThan(int age) {
         System.out.println("\n-----------------------------------");
         System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
-        students.parallelStream()
+        students.parallelStream()  //eficientizeaza daca ai mai multe elemente, creeaza mai multe treduri
                 .filter(student -> student.getAge() < age)
                 .forEach(student -> System.out.print(student));
 
@@ -210,6 +213,15 @@ public class SimulateTooLateClass {
         System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
         return students.stream()
                 .filter(student -> student.getAge() < age)
+                .collect(Collectors.toList());
+    }
+
+    private static List<String> displayStudentsYoungerThan2(int age) {
+        System.out.println("\n-----------------------------------");
+        System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
+        return students.stream()
+                .filter(student -> student.getAge() < age)
+                .map(student -> student.getFirstName())                     //map => student transforma student in getfirstname
                 .collect(Collectors.toList());
     }
 
@@ -239,6 +251,14 @@ public class SimulateTooLateClass {
                 }
             }
         }
+    }
+
+    private static void displayStudentsWithPreviousJavaKnowledge1() {
+        System.out.println("********StudentsWithPreviousJavaKnowledge****");
+        students.stream()
+                .filter(student -> (student != null && student.isHasPreviousJavaKnowledge() == true))
+                //.filter(student -> (method1() & method2()) chiar daca prima returneaza false se executa a doua  cu "&"
+                .forEach(System.out::println);
     }
 
     private static void displayStudentsWithPreviousJavaKnowledge() {
@@ -363,13 +383,13 @@ public class SimulateTooLateClass {
     }
 
     private static void addStudents() {
-        Student student1 = new Student(" Olteanu ", "Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student1 = new Student(" Olteanu ", "Alexandru ", LocalDate.of(1988, Month.OCTOBER, 12), true);
         Student student2 = new Student(" Draga ", "Sorin ", LocalDate.of(1988, Month.OCTOBER, 12), false);
-        Student student3 = new Student(" Gradinaru ", "Traian ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student3 = new Student(" Gradinaru ", "Traian ", LocalDate.of(2000, Month.OCTOBER, 12), false);
         Student student4 = new Student(" Lenter ", "Diana ", LocalDate.of(1988, Month.OCTOBER, 12), false);
         Student student5 = new Student(" Naghi ", "Andrea ", LocalDate.of(1988, Month.OCTOBER, 12), false);
         Student student6 = new Student(" Gheorghe ", "Dorina ", LocalDate.of(1988, Month.OCTOBER, 12), false);
-        Student student7 = new Student(" Calin ", "Cornelia ", LocalDate.of(1988, Month.OCTOBER, 12), false);
+        Student student7 = new Student(" Calin ", "Cornelia ", LocalDate.of(1990, Month.OCTOBER, 12), false);
         Student student8 = new Student(" Orza ", "Alexandra ", LocalDate.of(1988, Month.OCTOBER, 12), false);
         Student student9 = new Student(" Balan ", "Adrian ", LocalDate.of(1988, Month.OCTOBER, 12), false);
         Student student10 = new Student(" Torok ", "Szabi ", LocalDate.of(1988, Month.DECEMBER, 1), false);
