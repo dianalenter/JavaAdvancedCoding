@@ -44,6 +44,9 @@ public class SimulateTooLateClass {
         removeStudentsYoungerThanFromGroups(25);
 
         printStudentsAlphabeticallyByFirstName();
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge4();
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2();
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3();
 
     }
 
@@ -67,6 +70,7 @@ public class SimulateTooLateClass {
         System.out.println(students);
 
     }
+
     private static void printstudentAlfabetically() {
         System.out.println("\n-----------------------------------");
         System.out.print("Lista studentilor sortata dupa firstName: ");
@@ -78,6 +82,7 @@ public class SimulateTooLateClass {
 //                .sorted(Comparator.comparing(student -> student.getLastName()))
 //                .forEach(student -> System.out.println(student);
     }
+
     private static void printStudentsAlphabeticallyByFirstName() {
         System.out.println("\n-----------------------------------");
         System.out.print("Lista studentilor sortata dupa firstName: ");
@@ -90,7 +95,7 @@ public class SimulateTooLateClass {
     private static void showMaxNumberOfStudentsFromGroup_classicMethod() {
         System.out.println("\n-----------------------------------");
         System.out.print("Grupele cu maxim numar de studenti (classic method_1): ");
-        Group aux = new Group(null,null, new LinkedHashSet<>());
+        Group aux = new Group(null, null, new LinkedHashSet<>());
         for (Group group : groups) {
             if (group.getListOfStudents().size() > aux.getListOfStudents().size()) {  //>= ca sa arate daca au mai multe grupe acelasi nr de studenti
                 aux = group;
@@ -102,7 +107,7 @@ public class SimulateTooLateClass {
     private static void showAllMaxNumberOfStudentsFromGroup_classicMethod() {
         System.out.println("\n-----------------------------------");
         List<Group> groupsMax = new ArrayList<>();
-        Group aux = new Group(null,null, new LinkedHashSet<>());
+        Group aux = new Group(null, null, new LinkedHashSet<>());
 
         for (Group group : groups) {
             if (group.getListOfStudents().size() > aux.getListOfStudents().size()) {
@@ -135,6 +140,7 @@ public class SimulateTooLateClass {
                 //.forEach(g -> System.out.println(g));
                 .forEach(System.out::println);
     }
+
     private static void displayGroupWithMinNumOfStudent_FunctionalMethod() {
         //functional method
         System.out.println("\n-----------------------------------");
@@ -146,6 +152,7 @@ public class SimulateTooLateClass {
                 // .map(Group::getNameOfGroup)       //va lista doar numele grupelor(daca decomentez linia aceasta)
                 .forEach(System.out::println);
     }
+
     private static void studentsYoungerThan(int age) {
         System.out.println("\n-----------------------------------");
         System.out.print("\nLista studentilor mai tineri decat " + age + " ani : ");
@@ -239,6 +246,53 @@ public class SimulateTooLateClass {
         System.out.print("\nLista grupelor dupa stergerea studentilor mai tineri decat " + age + " ani : " + groups);
     }
 
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2() {
+        System.out.println("\n-----------------2------------------");
+        //afiseaza primul grup (chiar daca sunt mai multe cu acelasi numar de studenti fara cunostinte)
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: " +
+                groups.stream()
+                        .max(Comparator.comparing(g ->
+                                g.getListOfStudents().stream()
+                                        .filter(st -> st.isHasPreviousJavaKnowledge() == false)
+                                        .count()))
+                        .get()
+                        .toString()
+        );
+    }
+
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3() {
+        System.out.println("\n-----------------3------------------");
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: ");
+        groups.stream()
+                .filter(group -> group.getListOfStudents().stream()
+                        .filter(st -> !st.isHasPreviousJavaKnowledge())
+                        .count() ==
+                        groups.stream()
+                                .max(Comparator.comparing(g ->
+                                        g.getListOfStudents().stream()
+                                                .filter(st -> !st.isHasPreviousJavaKnowledge())
+                                                .count()))
+                                .get().getListOfStudents().stream()
+                                .filter(student -> !student.isHasPreviousJavaKnowledge())
+                                .count()
+                )
+                .forEach(group -> System.out.println(group));
+    }
+
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge4() {
+        System.out.println("\n-----------------4------------------");
+        //Am facut un getter in clasa Group care numara studentii fara cunostinte Java
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: ");
+        groups.stream()
+                .filter(group -> group.getNumOfStudentsWithNoPrevJavaKnow() == groups.stream()
+                        .max(Comparator.comparing(group1 -> group1.getNumOfStudentsWithNoPrevJavaKnow()))
+                        .get().getNumOfStudentsWithNoPrevJavaKnow()
+                )
+                .forEach(group -> System.out.println(group));
+    }
+
+
+
 
     private static void createClass() {
 
@@ -251,10 +305,10 @@ public class SimulateTooLateClass {
     }
 
     private static void addGroups() {
-        javaRo16 = new Group("JavaRo16",trainer1, studentsRo16);
-        javaRo17 = new Group("JavaRo17",trainer1, studentsRo17);
-        javaRo18 = new Group("JavaRo18",trainer3, studentsRo18);
-        javaRo19 = new Group("JavaRo19",null, studentsRo19);
+        javaRo16 = new Group("JavaRo16", trainer1, studentsRo16);
+        javaRo17 = new Group("JavaRo17", trainer1, studentsRo17);
+        javaRo18 = new Group("JavaRo18", trainer3, studentsRo18);
+        javaRo19 = new Group("JavaRo19", null, studentsRo19);
 
         groups = Arrays.asList(javaRo16, javaRo17, javaRo19, javaRo18);
     }
