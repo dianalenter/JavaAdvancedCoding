@@ -7,10 +7,10 @@ public class Group {
     //  private String nameOfGroup;  - nu mai e nevoie sa-i dau nume, deoarece
     // cand instantiez grupul ii dau nume
     // (Group grupaRO16 = new Group(name: groupRO16, trainer, lista de studenti)
-    private String nameOfGroup;
+    private final String nameOfGroup;
     private Trainer trainer;
     private Set<Student> listOfStudents;
-    private static Map<Student, Trainer> studentTrainerMap = new HashMap<>();
+    private static final  Map<Student, Trainer> studentTrainerMap = new HashMap<>();
 
     public Group(String nameOfGroup, Trainer trainer, Set<Student> listOfStudents) {
         this.nameOfGroup = nameOfGroup;

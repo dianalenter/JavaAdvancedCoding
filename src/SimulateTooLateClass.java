@@ -25,8 +25,8 @@ public class SimulateTooLateClass {
         printStudents();
         printGroup();
         printstudentAlfabetically();
-        showMaxNumberOfStudentsFromGroup_classicMethod();
-        showAllMaxNumberOfStudentsFromGroup_classicMethod();
+        getNumberOfStudentsFromGroup_classicMethod();
+        getAllMaxNumberOfStudentsFromGroup_classicMethod();
         displayGroupWithMaxNumOfStudent_FunctionalMethod();
         displayGroupWithMinNumOfStudent_FunctionalMethod();
         studentsYoungerThan(25);
@@ -47,7 +47,7 @@ public class SimulateTooLateClass {
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge4();
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2();
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3();
-
+        System.out.println("Triple : " + tripleNumberOfStudentsFromMaxGroup(getAllMaxNumberOfStudentsFromGroup_classicMethod()));
     }
 
     private static void printTrainers() {
@@ -92,7 +92,7 @@ public class SimulateTooLateClass {
     }
 
 
-    private static void showMaxNumberOfStudentsFromGroup_classicMethod() {
+    private static void getNumberOfStudentsFromGroup_classicMethod() {
         System.out.println("\n-----------------------------------");
         System.out.print("Grupele cu maxim numar de studenti (classic method_1): ");
         Group aux = new Group(null, null, new LinkedHashSet<>());
@@ -104,7 +104,7 @@ public class SimulateTooLateClass {
         System.out.println("max group size " + aux);
     }
 
-    private static void showAllMaxNumberOfStudentsFromGroup_classicMethod() {
+    private static List<Group> getAllMaxNumberOfStudentsFromGroup_classicMethod() {
         System.out.println("\n-----------------------------------");
         List<Group> groupsMax = new ArrayList<>();
         Group aux = new Group(null, null, new LinkedHashSet<>());
@@ -118,7 +118,19 @@ public class SimulateTooLateClass {
                 groupsMax.add(group);
             }
         }
-        System.out.println("list of maximum list" + groupsMax);
+        // System.out.println("list of maximum list" + groupsMax);
+        return groupsMax;
+    }
+
+    //...variable arguments, putem folosi atunci cand este ultimul paramatru din lista de parametrii, se foloseste cand e lista sau singur element
+    private static int multiplyingNumberOfStudentsFromMaxGroup(int numberOfTimes, List<Group> maxGroup) {
+        System.out.println("\n-----------------------------------");
+        return maxGroup.size() * maxGroup.get(0).getListOfStudents().size() * numberOfTimes;
+    }
+
+    private static int tripleNumberOfStudentsFromMaxGroup(List<Group> maxGroup) {
+        System.out.println("\n-----------------------------------");
+        return multiplyingNumberOfStudentsFromMaxGroup(3, maxGroup);
     }
 
     private static void displayGroupWithMaxNumOfStudent_FunctionalMethod() {
@@ -290,8 +302,6 @@ public class SimulateTooLateClass {
                 )
                 .forEach(group -> System.out.println(group));
     }
-
-
 
 
     private static void createClass() {
